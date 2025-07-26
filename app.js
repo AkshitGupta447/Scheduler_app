@@ -44,10 +44,11 @@ app.get('/user/dashboard', auth, (req, res) => {
 
 
 // We have to wait for database connection before starting server (ERROR HANDLING)
-connectionDB.then(()=>{
-    app.listen(PORT, ()=>{
-        console.log('Server is running and db is checked for any errors')
-    })
-}).catch((err)=>{
-    console.error('DB connection failed : ',err)
-})
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+connectionDB.catch((err)=>{
+    console.error('DB connection failed : ', err);
+});
