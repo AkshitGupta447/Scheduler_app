@@ -45,6 +45,10 @@ app.get('/user/dashboard', auth, (req, res) => {
 
 // We have to wait for database connection before starting server (ERROR HANDLING)
 
+app.get('/', (req, res) => {
+    res.redirect('/home'); // or res.render('home') directly
+  });
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
