@@ -5,6 +5,8 @@ const connectionDB = require('./config/db')
 
 const userRoute = require('./routes/user.routes')
 
+const PORT = process.env.PORT || 3000;
+
 app.set('view engine','ejs')
 
 app.use(express.json())
@@ -43,7 +45,7 @@ app.get('/user/dashboard', auth, (req, res) => {
 
 // We have to wait for database connection before starting server (ERROR HANDLING)
 connectionDB.then(()=>{
-    app.listen(3000, ()=>{
+    app.listen(PORT, ()=>{
         console.log('Server is running and db is checked for any errors')
     })
 }).catch((err)=>{
